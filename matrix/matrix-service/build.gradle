@@ -1,0 +1,15 @@
+/*
+ * This file was generated com the Gradle 'init' task.
+ *
+ * This is a general purpose Gradle build.
+ * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds/
+ */
+dependencies {
+    compile project(':matrix-repository')
+    compile project(':matrix-model')
+    compile project(':matrix-api')
+    compile project(':matrix-aop')
+    compile("org.springframework.boot:spring-boot-starter-mail:${springBootVersion}")
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.1'
+
+}

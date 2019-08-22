@@ -1,0 +1,8 @@
+
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-activemq:${springBootVersion}")
+    compile("org.apache.activemq:activemq-broker")
+    compile("org.aspectj:aspectjrt:1.8.5")
+    compile("org.aspectj:aspectjweaver:1.8.5")
+}

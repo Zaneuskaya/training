@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet id="2018/11/08 12:43:00" author="zaneuskaya">
+        <createTable tableName="skill_level">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="level" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2018/11/08 12:46:00" author="zaneuskaya">
+        <createTable tableName="credentials_role">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="role" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2018/11/08 12:47:00" author="zaneuskaya">
+        <createTable tableName="photo">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="label" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="image" type="BLOB(3000)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2018/11/08 12:49:00" author="zaneuskaya">
+        <createTable tableName="office">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="country" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(100)">
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2018/11/08 12:50:00" author="zaneuskaya">
+        <createTable tableName="department">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="office" type="int">
+                <constraints nullable="false" foreignKeyName="fk_department_office" references="office(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2018/11/08 12:50:30" author="zaneuskaya">
+        <createTable tableName="position">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="position_level" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2018/11/08 12:51:00" author="zaneuskaya">
+        <createTable tableName="credentials">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="mail" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="int">
+                <constraints nullable="false" foreignKeyName="fk_credentials_role" references="credentials_role(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2018/11/08 12:52:00" author="zaneuskaya">
+        <createTable tableName="employee">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="birthday" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="credentials" type="int">
+                <constraints nullable="false" foreignKeyName="fk_employee_credentials" references="credentials(id)"/>
+            </column>
+            <column name="photo" type="int">
+                <constraints nullable="true" foreignKeyName="fk_employee_photo" references="photo(id)"/>
+            </column>
+            <column name="position" type="int">
+                <constraints nullable="true" foreignKeyName="fk_employee_position" references="position(id)"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="employee"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="2018/11/08 12:52:30" author="zaneuskaya">
+        <addColumn tableName="department">
+            <column name="department_head" type="int">
+                <constraints nullable="true" foreignKeyName="fk_department_head" references="employee(id)"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2018/11/08 12:53:00" author="zaneuskaya">
+        <createTable tableName="skill">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2018/11/08 12:54:00" author="zaneuskaya">
+        <addColumn tableName="employee">
+            <column name="department" type="int">
+                <constraints nullable="false" foreignKeyName="fk_employee_department" references="department(id)"/>
+            </column>
+        </addColumn>
+        <rollback>
+            <dropColumn columnName="department"
+                        schemaName="public"
+                        tableName="employee"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="2018/11/08 12:55:00" author="zaneuskaya">
+        <createTable tableName="skill_employee">
+            <column name="skill" type="int">
+                <constraints nullable="false" foreignKeyName="fk_employee_skill" references="skill(id)"/>
+            </column>
+            <column name="employee" type="int">
+                <constraints nullable="false" foreignKeyName="fk_skill_employee" references="employee(id)"/>
+            </column>
+            <column name="skill_level" type="int">
+                <constraints nullable="false" foreignKeyName="fk_skill_level_employee" references="skill_level(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2018/11/08 13:00:00" author="zaneuskaya">
+        <createTable tableName="skill_position">
+            <column name="skill" type="int">
+                <constraints nullable="false" foreignKeyName="fk_position_skill" references="skill(id)"/>
+            </column>
+            <column name="position" type="int">
+                <constraints nullable="false" foreignKeyName="fk_skill_position" references="position(id)"/>
+            </column>
+            <column name="skill_level" type="int">
+                <constraints nullable="false" foreignKeyName="fk_skill_level_position" references="skill_level(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2018/11/08 13:02:00" author="zaneuskaya">
+        <createTable tableName="skill_group">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2018/11/08 13:03:00" author="zaneuskaya">
+        <createTable tableName="knowledge_field">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2018/11/08 13:03:30" author="zaneuskaya">
+        <addColumn tableName="skill_group">
+            <column name="knowledge_field" type="int">
+                <constraints nullable="false" foreignKeyName="fk_skill_group_knowledge_field"
+                             references="knowledge_field(id)"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2018/11/08 13:04:00" author="zaneuskaya">
+        <addColumn tableName="skill">
+            <column name="skill_group" type="int">
+                <constraints nullable="true" foreignKeyName="fk_skill_group" references="skill_group(id)"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2018/11/22 13:57:00" author="zaneuskaya">
+        <createTable tableName="user_status">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2018/11/22 13:59:00" author="zaneuskaya">
+        <addColumn tableName="credentials">
+            <column name="user_status" type="int">
+                <constraints nullable="false" foreignKeyName="fk_user_status" references="user_status(id)"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2018/11/22 16:52:00" author="zaneuskaya">
+        <addColumn tableName="department">
+            <column name="senior_department" type="int">
+                <constraints nullable="true" foreignKeyName="fk_senior_department" references="department(id)"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2018/11/22 18:06:00" author="zaneuskaya">
+        <addColumn tableName="position">
+            <column name="code" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

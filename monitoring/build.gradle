@@ -1,0 +1,41 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.0.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+
+    }
+}
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+
+repositories {
+    jcenter()
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+
+version = '0.0.1'
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}")
+    compile ("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-activemq:${springBootVersion}")
+    compile("org.apache.activemq:activemq-broker")
+    compile("com.fasterxml.jackson.core:jackson-databind")
+}
+
+bootJar {
+    baseName = 'matrix'
+    version = '0.1.0'
+    mainClassName = 'com.senla.monitoring.application.Application'
+}
+

@@ -1,0 +1,38 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Gradle template
+.gradle
+.idea
+build/
+gradle/
+gradlew
+gradlew.bat
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
+### Java template
+# Compiled class file
+
+# Log file
+*.log
+
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+matrix/matrix-service/out/
+matrix/matrix-model/src/generated/
+*.kotlin_module

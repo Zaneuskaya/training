@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet author="zaneuskaya" id="2018/12/11 17:31:00">
+        <insert tableName="skill_level">
+            <column name="id" value="1"/>
+            <column name="level" value="NONE"/>
+        </insert>
+        <insert tableName="skill_level">
+            <column name="id" value="2"/>
+            <column name="level" value="THEORY"/>
+        </insert>
+        <insert tableName="skill_level">
+            <column name="id" value="3"/>
+            <column name="level" value="PRACTICE"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/11 17:43:00">
+        <insert tableName="credentials_role">
+            <column name="id" value="1"/>
+            <column name="role" value="ADMIN"/>
+        </insert>
+        <insert tableName="credentials_role">
+            <column name="id" value="2"/>
+            <column name="role" value="MANAGER"/>
+        </insert>
+        <insert tableName="credentials_role">
+            <column name="id" value="3"/>
+            <column name="role" value="EMPLOYEE"/>
+        </insert>
+        <insert tableName="credentials_role">
+            <column name="id" value="4"/>
+            <column name="role" value="UNKNOWN"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/11 18:04:00">
+        <insert tableName="office">
+            <column name="id" value="1"/>
+            <column name="country" value="Belarus"/>
+            <column name="city" value="Grodno"/>
+            <column name="address" value="Gaspadarchaya str. 19"/>
+        </insert>
+        <insert tableName="office">
+            <column name="id" value="2"/>
+            <column name="country" value="Belarus"/>
+            <column name="city" value="Minsk"/>
+            <column name="address" value="Pobediteley pr. 4"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/11 18:05:00">
+        <insert tableName="department">
+            <column name="id" value="1"/>
+            <column name="title" value="JED"/>
+            <column name="office" value="1"/>
+        </insert>
+        <insert tableName="department">
+            <column name="id" value="2"/>
+            <column name="title" value="RIA"/>
+            <column name="office" value="1"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/11 18:06:00">
+        <insert tableName="position">
+            <column name="id" value="1"/>
+            <column name="code" value="SE1"/>
+            <column name="title" value="Software engineer"/>
+            <column name="position_level" value="Junior"/>
+        </insert>
+        <insert tableName="position">
+            <column name="id" value="2"/>
+            <column name="code" value="SE2"/>
+            <column name="title" value="Software engineer"/>
+            <column name="position_level" value="Middle"/>
+        </insert>
+        <insert tableName="position">
+            <column name="id" value="3"/>
+            <column name="code" value="OM1"/>
+            <column name="title" value="Office manager"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/12 17:03:00">
+        <insert tableName="user_status">
+            <column name="id" value="1"/>
+            <column name="title" value="active"/>
+        </insert>
+        <insert tableName="user_status">
+            <column name="id" value="2"/>
+            <column name="title" value="blocked"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/12 17:04:00">
+        <insert tableName="credentials">
+            <column name="id" value="1"/>
+            <column name="mail" value="testuser1@blabla.com"/>
+            <column name="password" value="testuser1"/>
+            <column name="role" value="3"/>
+            <column name="user_status" value="1"/>
+        </insert>
+        <insert tableName="credentials">
+            <column name="id" value="2"/>
+            <column name="mail" value="testadmin1@blabla.com"/>
+            <column name="password" value="testadmin1"/>
+            <column name="role" value="1"/>
+            <column name="user_status" value="1"/>
+        </insert>
+        <insert tableName="credentials">
+            <column name="id" value="3"/>
+            <column name="mail" value="testmanager1@blabla.com"/>
+            <column name="password" value="testmanager1"/>
+            <column name="role" value="2"/>
+            <column name="user_status" value="1"/>
+        </insert>
+        <insert tableName="credentials">
+            <column name="id" value="4"/>
+            <column name="mail" value="testmanager2@blabla.com"/>
+            <column name="password" value="testmanager2"/>
+            <column name="role" value="2"/>
+            <column name="user_status" value="2"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/12 17:18:00">
+        <insert tableName="employee">
+            <column name="id" value="1"/>
+            <column name="birthday" value="11-12-2018"/>
+            <column name="credentials" value="1"/>
+            <column name="name" value="Test gjk"/>
+            <column name="position" value="1"/>
+            <column name="department" value="2"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/12 17:23:00">
+        <insert tableName="employee">
+            <column name="id" value="2"/>
+            <column name="birthday" value="11-12-1918"/>
+            <column name="credentials" value="2"/>
+            <column name="name" value="Test 2222"/>
+            <column name="position" value="2"/>
+            <column name="department" value="1"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/12 17:24:00">
+        <insert tableName="department">
+            <column name="id" value="3"/>
+            <column name="title" value="Cloud"/>
+            <column name="office" value="1"/>
+            <column name="department_head" value="1"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/12 17:25:00">
+        <insert tableName="skill">
+            <column name="id" value="1"/>
+            <column name="title" value="Be funny"/>
+        </insert>
+        <insert tableName="skill">
+            <column name="id" value="2"/>
+            <column name="title" value="Be smart"/>
+        </insert>
+        <insert tableName="skill">
+            <column name="id" value="3"/>
+            <column name="title" value="Style"/>
+        </insert>
+        <insert tableName="skill">
+            <column name="id" value="4"/>
+            <column name="title" value="Cook donuts"/>
+        </insert>
+        <insert tableName="skill">
+            <column name="id" value="5"/>
+            <column name="title" value="Music lover"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/12 17:27:00">
+        <insert tableName="employee">
+            <column name="id" value="3"/>
+            <column name="birthday" value="12-12-1918"/>
+            <column name="credentials" value="3"/>
+            <column name="name" value="Test user4ik"/>
+            <column name="position" value="2"/>
+            <column name="department" value="1"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/12 17:29:00">
+        <insert tableName="skill_employee">
+            <column name="skill" value="1"/>
+            <column name="employee" value="1"/>
+            <column name="skill_level" value="1"/>
+        </insert>
+        <insert tableName="skill_employee">
+            <column name="skill" value="2"/>
+            <column name="employee" value="1"/>
+            <column name="skill_level" value="2"/>
+        </insert>
+        <insert tableName="skill_employee">
+            <column name="skill" value="3"/>
+            <column name="employee" value="1"/>
+            <column name="skill_level" value="1"/>
+        </insert>
+        <insert tableName="skill_employee">
+            <column name="skill" value="3"/>
+            <column name="employee" value="2"/>
+            <column name="skill_level" value="2"/>
+        </insert>
+        <insert tableName="skill_employee">
+            <column name="skill" value="4"/>
+            <column name="employee" value="2"/>
+            <column name="skill_level" value="2"/>
+        </insert>
+        <insert tableName="skill_employee">
+            <column name="skill" value="5"/>
+            <column name="employee" value="2"/>
+            <column name="skill_level" value="2"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/12 17:31:00">
+        <insert tableName="skill_position">
+            <column name="skill" value="5"/>
+            <column name="position" value="1"/>
+            <column name="skill_level" value="2"/>
+        </insert>
+        <insert tableName="skill_position">
+            <column name="skill" value="4"/>
+            <column name="position" value="1"/>
+            <column name="skill_level" value="2"/>
+        </insert>
+        <insert tableName="skill_position">
+            <column name="skill" value="3"/>
+            <column name="position" value="1"/>
+            <column name="skill_level" value="2"/>
+        </insert>
+        <insert tableName="skill_position">
+            <column name="skill" value="2"/>
+            <column name="position" value="1"/>
+            <column name="skill_level" value="2"/>
+        </insert>
+        <insert tableName="skill_position">
+            <column name="skill" value="5"/>
+            <column name="position" value="2"/>
+            <column name="skill_level" value="2"/>
+        </insert>
+        <insert tableName="skill_position">
+            <column name="skill" value="4"/>
+            <column name="position" value="2"/>
+            <column name="skill_level" value="2"/>
+        </insert>
+        <insert tableName="skill_position">
+            <column name="skill" value="3"/>
+            <column name="position" value="2"/>
+            <column name="skill_level" value="2"/>
+        </insert>
+        <insert tableName="skill_position">
+            <column name="skill" value="1"/>
+            <column name="position" value="2"/>
+            <column name="skill_level" value="1"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/12 17:41:00">
+        <insert tableName="knowledge_field">
+            <column name="id" value="1"/>
+            <column name="title" value="JED field"/>
+        </insert>
+        <insert tableName="knowledge_field">
+            <column name="id" value="2"/>
+            <column name="title" value="RIA field"/>
+        </insert>
+        <insert tableName="knowledge_field">
+            <column name="id" value="3"/>
+            <column name="title" value="QA field"/>
+        </insert>
+        <insert tableName="knowledge_field">
+            <column name="id" value="4"/>
+            <column name="title" value="Android field"/>
+        </insert>
+        <insert tableName="skill_group">
+            <column name="id" value="1"/>
+            <column name="title" value="Java basics"/>
+            <column name="knowledge_field" value="1"/>
+        </insert>
+        <insert tableName="skill_group">
+            <column name="id" value="2"/>
+            <column name="title" value="QA basics"/>
+            <column name="knowledge_field" value="3"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/12 17:46:00">
+        <insert tableName="skill">
+            <column name="id" value="7"/>
+            <column name="title" value="Be funny"/>
+            <column name="skill_group" value="1"/>
+        </insert>
+    </changeSet>
+    <changeSet author="zaneuskaya" id="2018/12/12 17:47:00">
+        <insert tableName="skill">
+            <column name="id" value="8"/>
+            <column name="title" value="Be awesome"/>
+            <column name="skill_group" value="1"/>
+        </insert>
+        <insert tableName="skill">
+            <column name="id" value="9"/>
+            <column name="title" value="Create Java beans"/>
+            <column name="skill_group" value="1"/>
+        </insert>
+        <insert tableName="skill">
+            <column name="id" value="10"/>
+            <column name="title" value="Make cool code"/>
+            <column name="skill_group" value="1"/>
+        </insert>
+        <insert tableName="skill">
+            <column name="id" value="11"/>
+            <column name="title" value="Exceptions"/>
+            <column name="skill_group" value="1"/>
+        </insert>
+        <insert tableName="skill">
+            <column name="id" value="12"/>
+            <column name="title" value="Annotations"/>
+            <column name="skill_group" value="1"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
