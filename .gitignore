@@ -36,3 +36,4 @@ gradle-app.setting
 matrix/matrix-service/out/
 matrix/matrix-model/src/generated/
 *.kotlin_module
+jenkins/target/
